@@ -25,7 +25,11 @@ function timeConversion(s) {
     } else if (timeArr[timeArr.length - 2] === "A") {
         timeArr.pop()
         timeArr.pop()
-        return [timeArr.pop()].join("")
+        return timeArr.join("")
+    } else if (timeArr[timeArr.length - 2] === "P" && newArr[0] === "12") {
+        timeArr.pop()
+        timeArr.pop()
+        return timeArr.join("") 
     } else {
         mutatedArr.pop()
         mutatedArr.pop()
