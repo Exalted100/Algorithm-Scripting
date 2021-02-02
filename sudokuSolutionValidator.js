@@ -6,6 +6,8 @@ The board is always 9 cells by 9 cells, and every cell only contains integers fr
 I added a condition to make the function work even where the array has more than nine values, but not when there are more than nine arrays.
 */
 
+//My solution
+
 function validSolution(board){
     //TODO
     let test = true
@@ -85,4 +87,76 @@ function validSolution(board){
     }
     
     return test
+  }
+
+
+//Other solutions
+function equals45(n){
+    return n == 45;
+  }
+  
+  function validSolution(board){
+    var sumh = [0,0,0,0,0,0,0,0,0];
+    var sumv = [0,0,0,0,0,0,0,0,0];
+    osums = [[0,0,0],[0,0,0],[0,0,0]];
+    for (var i=0;i<9;i++){
+      for (var j=0;j<9;j++){
+        sumh[i] += board[i][j];
+        sumv[j] += board[i][j];
+        osums[Math.floor(i/3)][Math.floor(j/3)] += board[i][j];
+      }
+    }
+    for (var i=0;i<3;i++) if (!osums[i].every(equals45)) return false;
+    return (sumh.every(equals45) && sumv.every(equals45));
+  }
+
+  function validSolution(board){
+    var validSet = s => s.size == 9 && !s.has(0);
+    var rowSet = i => board[i].reduce((s,v) => s.add(v), new Set());
+    var columnSet = i => board.reduce((s,v) => s.add(v[i]), new Set());
+    var boxSet = ([r,c]) => board.slice(r,r+3).reduce((s,v) => v.slice(c,c+3).reduce((s,v) => s.add(v), s), new Set());
+    var boxCorner = i => [Math.floor(i / 3) * 3,(i % 3) * 3];
+    for (var i = 0; i < 9; i++)
+      if ( !validSet(rowSet(i)) || !validSet(columnSet(i)) || !validSet(boxSet(boxCorner(i))) )
+        return false;
+    return true;
+  }
+
+  function validSolution(board){
+    // check horizontal lines
+    for(var j=0; j<9; j++){
+      if(!check(board[j])) return false;
+    }
+    
+    // check vertical lines
+    for(var j=0; j<9; j++){
+      var line = [];
+      for(var k=0; k<9; k++){
+        line.push(board[k][j]);
+      }
+      if(!check(line)) return false;
+    }
+    
+    // check 3x3 squares
+    for(var j=0; j<9; j+=3){
+      for(var k=0; k<9; k+=3){
+        var square = [];
+        for(var l=j; l<j+3; l++){
+          for(var m=k; m<k+3; m++){
+            square.push(board[l][m]);
+          }
+        }
+        if(!check(square)) return false;
+      }
+    }
+    
+    // if it hasn't returned false so far then we
+    // have a valid 9x9 square, so return true
+    return true;
+  }
+  
+  // checks that an array of length 9 contains 
+  // exactly the numbers 1, 2, ..., 9
+  function check(numbers){
+    return numbers.slice(0).sort().every(function(e, i){return e==i+1;});
   }
