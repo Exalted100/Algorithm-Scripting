@@ -80,9 +80,7 @@ function appendAndDelete(s, t, k) {
  
     if (tMinusCount + sMinusCount < k && STK % 2 !== 0 && t.length + s.length > k) {
         return "No"
-    }
-    
-    if (tMinusCount + sMinusCount <= k) {
+    } else if (tMinusCount + sMinusCount <= k) {
         return "Yes"
     } else {
         return "No"
