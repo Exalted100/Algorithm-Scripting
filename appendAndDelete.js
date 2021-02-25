@@ -62,3 +62,39 @@ function appendAndDelete(s, t, k) {
     }
     //}
 }
+
+function appendAndDelete(s, t, k) {
+    let sArr = s.split("")
+    let tArr = t.split("")
+    let count = 0
+    for (let i = 0; i === count && i < s.length; i++) {
+        if (sArr[i] === tArr[i]) {
+            count++
+        }
+    }
+    
+    let tMinusCount = t.length - count
+    let sMinusCount = s.length - count
+    
+    let STK = k - (tMinusCount + sMinusCount)
+ 
+    /*if (sMinusCount < tMinusCount && k % tMinusCount === 0 && k > 2) {
+        return "Yes"
+    }
+    
+    if (sMinusCount < tMinusCount) {
+        return "No"
+    }*/
+    
+    if (tMinusCount + sMinusCount < k && STK % 2 !== 0 && t.length * 2 > k) {
+        return "No"
+    }
+    
+    if (tMinusCount + sMinusCount <= k) {
+        return "Yes"
+    } else {
+        return "No"
+    }
+    
+    //No conditional for if tMinusCount + sMinusCount > k because that case should always return "No"
+}
