@@ -78,7 +78,7 @@ function appendAndDelete(s, t, k) {
     
     let STK = k - (tMinusCount + sMinusCount)
  
-    if (tMinusCount + sMinusCount < k && STK % 2 !== 0 && t.length * 2 > k) {
+    if (tMinusCount + sMinusCount < k && STK % 2 !== 0 && t.length + s.length > k) {
         return "No"
     }
     
@@ -87,6 +87,4 @@ function appendAndDelete(s, t, k) {
     } else {
         return "No"
     }
-    
-    //No conditional for if tMinusCount + sMinusCount > k because that case should always return "No"
 }
