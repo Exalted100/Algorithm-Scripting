@@ -78,14 +78,6 @@ function appendAndDelete(s, t, k) {
     
     let STK = k - (tMinusCount + sMinusCount)
  
-    /*if (sMinusCount < tMinusCount && k % tMinusCount === 0 && k > 2) {
-        return "Yes"
-    }
-    
-    if (sMinusCount < tMinusCount) {
-        return "No"
-    }*/
-    
     if (tMinusCount + sMinusCount < k && STK % 2 !== 0 && t.length * 2 > k) {
         return "No"
     }
