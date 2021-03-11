@@ -17,6 +17,11 @@ Complete the diagonalDifference function in the editor below.
 
 function diagonalDifference(arr) {
     // Write your code here
-    let difference = (arr[0][0] + arr [1][1] + arr[2][2]) - (arr[0][2] + arr[1][1] + arr[2][0])
-    return Math.abs(difference)
+    let diagonalOne = 0
+    let diagonalTwo = 0
+    for(let i = 0; i < arr.length; i++) {
+        diagonalOne = diagonalOne + arr[i][i]
+        diagonalTwo = diagonalTwo + arr[i][(arr.length - 1) -i]
+    }
+    return Math.abs(diagonalOne - diagonalTwo)
 }
