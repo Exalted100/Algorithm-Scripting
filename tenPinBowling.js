@@ -35,7 +35,7 @@ function bowlingScore(frames) {
       if (value === "X") {
         return 10
       } else if (value === "/") {
-        return parseInt(arr[index - 1])
+        return 10 - arr[index - 1]
       } else {
         return parseInt(value)
       }
@@ -44,16 +44,20 @@ function bowlingScore(frames) {
       let subtract = 0
       let firstArr = frames.split(" ")
       let normalizeArr = firstArr[firstArr.length - 1].split("")
-        if (normalizeArr[1] === "X") {
-          subtract += 10
-        }
-        if (normalizeArr[2] === "X") {
-          subtract += 20
-        }
+      console.log(normalizeArr)
+      if (normalizeArr[0] === "X") {
+        console.log("subtract at first if is :" + subtract)
+        subtract += convert(normalizeArr[1], normalizeArr, 1)
+        normalizeArr[2] === undefined ? subtract += 0 : subtract += convert(normalizeArr[2])
+      }
+      if (normalizeArr[1] === "X" || normalizeArr[1] === "/") {
+        console.log("subtract at second if is :" + subtract)
+        subtract += convert(normalizeArr[2])
+      }
       console.log(subtract)
       return score - subtract
     }
-    // Figure out the score!
+
     let arr = frames.split("")
     let newArr = []
     for (let i = 0; i < arr.length; i++) {
