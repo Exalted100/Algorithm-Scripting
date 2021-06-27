@@ -35,11 +35,7 @@ function topThreeWords(text) {
         array.push(arr[i])
       }
     }
-    let count = 0
-    let first = 0
-    let second = 0
-    let third = 0
-    let finalArr = [array[0], array[1], array[2]]
+    let count = 0, first = 0, second = 0, finalArr = [array[0], array[1], array[2]]
     
     for (let i = 0; i < array.length; i++) {
       count = 0

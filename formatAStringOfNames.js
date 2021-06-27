@@ -28,13 +28,12 @@ function list(names){
     }
     else if (names.length === 0) {
       return "";
-    }
-    else {
-      let arr = [];
-      for (let i = 0; i < names.length - 2; i++) {
-        arr.push(names[i].name);
-      }
-      let str = arr.join(", ");
-      return str + ", " + names[names.length - 2].name + " & " + names[names.length - 1].name;
+    } else {
+        let arr = [];
+        for (let i = 0; i < names.length - 2; i++) {
+          arr.push(names[i].name);
+        }
+        let str = arr.join(", ");
+        return str + ", " + names[names.length - 2].name + " & " + names[names.length - 1].name;
     }
   }
